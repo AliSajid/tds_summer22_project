@@ -7,7 +7,9 @@ create_dir <- function(dir) {
 
 data <- "data"
 results <- "results"
+dge_dir <- file.path(results, "dge")
+regions <- file.path(dge_dir, c(nAcc = "nAcc", DLPFC = "DLPFC", AnCg = "AnCg"))
 figures <- "figures"
 
-dirs <- c(data, results, figures)
+dirs <- c(data, regions, figures)
 sapply(dirs, create_dir)
