@@ -2,17 +2,18 @@
 
 library(tidyverse)
 library(edgeR)
+library(org.Hs.eg.db)
 
 get_dge <- function(region) {
     metadata <- read_csv("data/dataset_metadata.csv") |>
         filter(brain_region == region)
     counts <- read_csv("data/dataset_count_data.csv") |>
-        select(gene_id, any_of(metadata$sample_id))
+        dplyr::select(gene_id:entrez_id, any_of(metadata$sample_id))
 
     dge <-
         DGEList(
-            counts = counts[, 2:ncol(counts)],
-            genes = counts[, 1],
+            counts = counts[, 6:ncol(counts)],
+            genes = counts[, 1:5],
             samples = metadata,
             group = metadata$clinical_diagnosis
         )
@@ -53,6 +54,7 @@ get_dge <- function(region) {
         ALL = topTags(qlf_all, n = Inf)$table
     )
 }
+
 
 write_results <- function(dataset, name) {
 
