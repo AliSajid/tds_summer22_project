@@ -1,0 +1,6 @@
+---
+title: "Exploring Common Drug Signatures for Major Psychiatric Disorders"
+author: "Dr. Ali Sajid Imami"
+format: pdf
+editor: visual
+---
