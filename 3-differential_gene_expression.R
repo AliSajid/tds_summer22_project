@@ -78,5 +78,5 @@ regions <- c(nAcc = "nAcc", DLPFC = "DLPFC", AnCg = "AnCg")
 
 diff_genes <- regions |>
     map(get_dge) |>
-    unlist(FALSE) %>%
-    map2(names(.), write_results)
+    unlist(FALSE)  |>
+    imap(names(.), write_results)
